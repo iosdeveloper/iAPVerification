@@ -31,6 +31,6 @@ typedef enum _iAPErrorCode {
 @optional
 
 - (void)verificationFailed:(int)errorCode error:(NSError *)error;
-- (void)purchaseVerified:(NSDictionary *)dictionary; // Available keys: 'quantity', 'product_id, 'transaction_id', 'purchase_date', 'app_item_id', 'bid', 'bvrs'
+- (void)purchaseVerified:(NSDictionary *)dictionary; // Available keys: 'quantity', 'product_id', 'transaction_id', 'purchase_date', 'app_item_id', 'bid', 'bvrs'
 
 @end

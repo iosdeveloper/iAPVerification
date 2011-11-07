@@ -13,7 +13,6 @@ typedef enum _iAPErrorCode {
     iAPTransactionMissing = 0, // paymentTransaction object missing
     iAPVerificationFailed = 1,
     iAPConnectionFailed = 2, // Server connection failed
-    iAPDataConversionFailed = 3 // Invalid server response
 } iAPErrorCode;
 
 @interface iAPVerification : NSObject {
@@ -21,8 +20,8 @@ typedef enum _iAPErrorCode {
     NSMutableData *_receivedData;
 }
 
-- (id)init:(SKPaymentTransaction *)paymentTransaction isSandbox:(BOOL)isSandbox delegate:(id)delegate;
-+ (id)verifyPurchase:(SKPaymentTransaction *)paymentTransaction isSandbox:(BOOL)isSandbox delegate:(id)delegate;
+- (id)init:(SKPaymentTransaction *)paymentTransaction isSandbox:(BOOL)sandbox delegate:(id)delegate;
++ (id)verifyPurchase:(SKPaymentTransaction *)paymentTransaction isSandbox:(BOOL)sandbox delegate:(id)delegate;
 
 @end
 

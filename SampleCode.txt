@@ -4,13 +4,10 @@
 	for (SKPaymentTransaction *transaction in transactions) {
 		switch (transaction.transactionState) {
 			case SKPaymentTransactionStatePurchased:
-				[iAPVerification verifyPurchase:transaction isSandbox:YES delegate:self];
-				[queue finishTransaction:transaction];
-				break;
+				[iAPVerification verifyPurchase:transaction isSandbox:YES delegate:self];					break;
 			
 			case SKPaymentTransactionStateRestored:
 				[iAPVerification verifyPurchase:transaction isSandbox:YES delegate:self];
-				[queue finishTransaction:transaction];
 				break;
 		}
 	}
@@ -27,5 +24,8 @@
 	
 	if ([productId isEqualToString:@"com.powerflightapp.iap.1"]) {
 		// Provide content
+		
+		SKPaymentQueue *queue = [SKPaymentQueue defaultQueue];
+		[queue finishTransaction:[queue.transactions objectAtIndex:0]];
 	}
 }

@@ -4,7 +4,8 @@
 	for (SKPaymentTransaction *transaction in transactions) {
 		switch (transaction.transactionState) {
 			case SKPaymentTransactionStatePurchased:
-				[iAPVerification verifyPurchase:transaction isSandbox:YES delegate:self];					break;
+				[iAPVerification verifyPurchase:transaction isSandbox:YES delegate:self];
+				break;
 			
 			case SKPaymentTransactionStateRestored:
 				[iAPVerification verifyPurchase:transaction isSandbox:YES delegate:self];

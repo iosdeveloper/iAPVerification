@@ -25,8 +25,14 @@
 	
 	if ([productId isEqualToString:@"com.powerflightapp.iap.1"]) {
 		// Provide content
-		
-		SKPaymentQueue *queue = [SKPaymentQueue defaultQueue];
-		[queue finishTransaction:[queue.transactions objectAtIndex:0]];
+	}
+	
+	SKPaymentQueue *queue = [SKPaymentQueue defaultQueue];
+	NSString *transactionId = [dictionary objectForKey:@"transaction_id"];
+	
+	for (SKPaymentTransaction *transaction in queue.transactions) {
+		if ([transactionId isEqualToString:transaction.transactionIdentifier]) {
+			[queue finishTransaction:transaction];
+		}
 	}
 }

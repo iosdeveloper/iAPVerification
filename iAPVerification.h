@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <StoreKit/StoreKit.h>
 
-typedef enum _iAPErrorCode {
-    iAPTransactionMissing = 0, // paymentTransaction object missing
-    iAPVerificationFailed = 1,
-    iAPConnectionFailed = 2, // Server connection failed
+typedef enum {
+    iAPTransactionMissing, // paymentTransaction object missing
+    iAPVerificationFailed,
+    iAPConnectionFailed, // Server connection failed
 } iAPErrorCode;
 
 @interface iAPVerification : NSObject {
@@ -22,6 +22,9 @@ typedef enum _iAPErrorCode {
 
 - (id)init:(SKPaymentTransaction *)paymentTransaction isSandbox:(BOOL)sandbox delegate:(id)delegate;
 + (id)verifyPurchase:(SKPaymentTransaction *)paymentTransaction isSandbox:(BOOL)sandbox delegate:(id)delegate;
+
+- (id)init:(SKPaymentTransaction *)paymentTransaction serverUrl:(NSString *)urlString isSandbox:(BOOL)sandbox delegate:(id)delegate;
++ (id)verifyPurchase:(SKPaymentTransaction *)paymentTransaction serverUrl:(NSString *)urlString isSandbox:(BOOL)sandbox delegate:(id)delegate;
 
 @end
 

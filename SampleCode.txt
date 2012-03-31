@@ -2,19 +2,11 @@
 
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions {
 	for (SKPaymentTransaction *transaction in transactions) {
-		switch (transaction.transactionState) {
-			case SKPaymentTransactionStatePurchased:
-				[iAPVerification verifyPurchase:transaction isSandbox:YES delegate:self];
-				break;
-			
-			case SKPaymentTransactionStateRestored:
-				[iAPVerification verifyPurchase:transaction isSandbox:YES delegate:self];
-				break;
-		}
+		[iAPVerification verifyPurchase:transaction isSandbox:YES delegate:self];
 	}
 }
 
-- (void)verificationFailed:(iAPErrorCode)errorCode error:(NSError *)error {
+- (void)verificationFailed:(iAPErrorCode)errorCode error:(NSError *)error paymentTransaction:(SKPaymentTransaction *)paymentTransaction {
 	NSLog(@"%d, %@", errorCode, error);
 }
 

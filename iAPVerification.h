@@ -14,10 +14,7 @@ typedef enum {
     iAPConnectionFailed, // Server connection failed
 } iAPErrorCode;
 
-@interface iAPVerification : NSObject {
-    id _delegate;
-    NSMutableData *_receivedData;
-}
+@interface iAPVerification : NSObject
 
 + (void)verifyPurchase:(SKPaymentTransaction *)paymentTransaction isSandbox:(BOOL)sandbox delegate:(id)delegate;
 + (void)verifyPurchase:(SKPaymentTransaction *)paymentTransaction serverUrl:(NSString *)urlString isSandbox:(BOOL)sandbox delegate:(id)delegate;

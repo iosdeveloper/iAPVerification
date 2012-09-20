@@ -10,7 +10,7 @@
 	NSLog(@"%d, %@", errorCode, error);
 }
 
-- (void)purchaseVerified:(NSDictionary *)dictionary {
+- (void)purchaseVerified:(NSDictionary *)dictionary paymentTransaction:(SKPaymentTransaction *)paymentTransaction {
 	//NSLog(@"%@", dictionary);
 	
 	NSString *productId = [dictionary objectForKey:@"product_id"];
@@ -19,12 +19,5 @@
 		// Provide content
 	}
 	
-	SKPaymentQueue *queue = [SKPaymentQueue defaultQueue];
-	NSString *transactionId = [dictionary objectForKey:@"transaction_id"];
-	
-	for (SKPaymentTransaction *transaction in queue.transactions) {
-		if ([transactionId isEqualToString:transaction.transactionIdentifier]) {
-			[queue finishTransaction:transaction];
-		}
-	}
+	[[SKPaymentQueue defaultQueue] finishTransaction:paymentTransaction];
 }

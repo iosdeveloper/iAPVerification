@@ -28,9 +28,10 @@ typedef enum {
 @optional
 
 - (void)verificationFailed:(iAPErrorCode)errorCode error:(NSError *)error paymentTransaction:(SKPaymentTransaction *)paymentTransaction;
-- (void)purchaseVerified:(NSDictionary *)dictionary; // Available keys: 'quantity', 'product_id', 'transaction_id', 'purchase_date', 'app_item_id', 'bid', 'bvrs'
+- (void)purchaseVerified:(NSDictionary *)dictionary paymentTransaction:(SKPaymentTransaction *)paymentTransaction; // Available keys: 'quantity', 'product_id', 'transaction_id', 'purchase_date', 'app_item_id', 'bid', 'bvrs'
 
 /* DEPRECATED */
 - (void)verificationFailed:(iAPErrorCode)errorCode error:(NSError *)error __attribute__((deprecated));
+- (void)purchaseVerified:(NSDictionary *)dictionary __attribute__((deprecated));
 
 @end
